@@ -1,5 +1,5 @@
 import 'package:app/views/home_page.dart';
-import 'package:app/views/table_leags.dart';
+// import 'package:app/views/table_leags.dart';
 import 'package:flutter/material.dart';
 
 // handle named routes

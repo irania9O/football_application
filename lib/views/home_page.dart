@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   List competitions = [];
   Football? footbalis;
   bool isLoaded = false;
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   @override
   void initState() {
