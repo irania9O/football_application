@@ -1,5 +1,4 @@
 import 'package:app/models/footbali_model.dart';
-import 'package:app/views/table_leags.dart';
 import 'package:app/services/footbali_services.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +14,6 @@ class _HomePageState extends State<HomePage> {
   List competitions = [];
   Football? footbalis;
   bool isLoaded = false;
-  late final int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -39,16 +37,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.deepOrange,
-          elevation: 15,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(40),
+        body: Padding(
+      // transform: Matrix4.translationValues(0, 20, 0),
+      padding: const EdgeInsets.only(top: 20),
+      child: ListView.builder(
+        itemCount: competitions
+            .length, // footbalis!.data.competitionMatches[0].matches!.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            highlightColor: Colors.deepOrangeAccent,
+            hoverColor: Colors.deepOrange,
+            splashColor: Colors.white,
+            // onTap: () {
+            //   print(competitions[index].homeTeam.nameEn);
+            // },
+            autofocus: false,
             child: Container(
-              height: 40,
               margin: const EdgeInsets.all(16),
-              transform: Matrix4.translationValues(0, -14, 0),
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.white,
@@ -61,141 +67,90 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+              foregroundDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.grey.withOpacity(0.5),
+                ),
+              ),
               child: Row(
-                children: const [
-                  Icon(Icons.search),
-                  SizedBox(
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          competitions[index].homeTeam.logo,
+                        ),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
                     width: 16,
                   ),
                   Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        border: InputBorder.none,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          competitions[index].homeTeam.nameFa ??
+                              competitions[index].homeTeam.nameEn,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Text(
+                    competitions[index].status,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          competitions[index].awayTeam.nameFa ??
+                              competitions[index].awayTeam.nameEn,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          competitions[index].awayTeam.logo,
+                        ),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ),
-        body: Padding(
-          // transform: Matrix4.translationValues(0, 20, 0),
-          padding: const EdgeInsets.only(top: 20),
-          child: ListView.builder(
-            itemCount: competitions
-                .length, // footbalis!.data.competitionMatches[0].matches!.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                highlightColor: Colors.deepOrangeAccent,
-                hoverColor: Colors.deepOrange,
-                splashColor: Colors.white,
-                // onTap: () {
-                //   print(competitions[index].homeTeam.nameEn);
-                // },
-                autofocus: false,
-                child: Container(
-                  margin: const EdgeInsets.all(16),
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  foregroundDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Colors.grey.withOpacity(0.5),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              competitions[index].homeTeam.logo,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              competitions[index].homeTeam.nameFa ??
-                                  competitions[index].homeTeam.nameEn,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 16,
-                      ),
-                      Text(
-                        competitions[index].status,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              competitions[index].awayTeam.nameFa ??
-                                  competitions[index].awayTeam.nameEn,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 16,
-                      ),
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              competitions[index].awayTeam.logo,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ));
+          );
+        },
+      ),
+    ));
   }
 }

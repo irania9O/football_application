@@ -1,5 +1,5 @@
 import 'package:app/views/home_page.dart';
-// import 'package:app/views/table_leags.dart';
+import 'package:app/views/table_leags.dart';
 import 'package:flutter/material.dart';
 
 // handle named routes
@@ -37,22 +37,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-
-  List _pages = [
-    HomePage(),
-    const Center(
-      child: Text("About"),
-    ),
-    const Center(
-      child: Text("Products"),
-    ),
-    const Center(
-      child: Text("Contact"),
-    ),
-    const Center(
-      child: Text("Settings"),
-    ),
+  final dynamic _pages = [
+    const HomePage(),
+    const TableLeags(),
+    const HomePage(),
+    const HomePage(),
   ];
+  // final List _pages = [
+  //   const HomePage(),
+  //   const TableLeags(),
+  //   const HomePage(),
+  //   const HomePage(),
+  // ];
 
   @override
   Widget build(BuildContext context) {
