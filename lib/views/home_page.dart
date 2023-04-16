@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   List competitions = [];
   Football? footbalis;
   bool isLoaded = false;
-  final int _selectedIndex = 0;
+  late final int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -79,53 +79,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-          selectedIconTheme: const IconThemeData(size: 30),
-          unselectedIconTheme: const IconThemeData(size: 25),
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.table_chart),
-              label: 'Table',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'Calendar',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.deepOrange,
-          unselectedItemColor: Colors.grey,
-          onTap: (index) {
-            setState(() {
-              if (_selectedIndex == index) {
-                return;
-              } else if (index == 0) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) => const HomePage(),
-                ));
-              } else if (index == 1) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) => const TableLeags(),
-                ));
-              } else if (index == 2) {
-                Navigator.pushNamed(context, '/calendar');
-              } else if (index == 3) {
-                Navigator.pushNamed(context, '/profile');
-              }
-            });
-          },
         ),
         body: Padding(
           // transform: Matrix4.translationValues(0, 20, 0),
