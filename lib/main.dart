@@ -1,6 +1,7 @@
 import 'package:app/views/home_page.dart';
 import 'package:app/views/table_leags.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // handle named routes
 
@@ -53,7 +54,20 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      appBar: AppBar(
+          title: const Text('Footballo'),
+          backgroundColor: Colors.deepOrangeAccent,
+          centerTitle: true,
+          elevation: 10,
+          toolbarHeight: 65,
+          shape: const RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.vertical(bottom: Radius.elliptical(100, 100)),
+          )),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: _pages[_selectedIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         selectedIconTheme: const IconThemeData(size: 30),
