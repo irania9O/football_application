@@ -198,9 +198,9 @@ class Player {
       };
 }
 
-enum FullBirthplace { EMPTY }
+enum FullBirthplace { empty }
 
-final fullBirthplaceValues = EnumValues({"، ": FullBirthplace.EMPTY});
+final fullBirthplaceValues = EnumValues({"، ": FullBirthplace.empty});
 
 class Team {
   Team({
@@ -246,9 +246,9 @@ class Team {
       };
 }
 
-enum Country { SPAIN }
+enum Country { spain }
 
-final countryValues = EnumValues({"Spain": Country.SPAIN});
+final countryValues = EnumValues({"Spain": Country.spain});
 
 class Calendar {
   Calendar({
@@ -538,9 +538,9 @@ class NewsImage {
       };
 }
 
-enum Source { EMPTY }
+enum Source { empty }
 
-final sourceValues = EnumValues({"فوتبالی": Source.EMPTY});
+final sourceValues = EnumValues({"فوتبالی": Source.empty});
 
 class Match {
   Match({
@@ -616,8 +616,8 @@ class Match {
   bool hasPrediction;
   int tvChannel;
   bool predictable;
-  String? oldStatus;
-  String? liveStreamUrl;
+  dynamic oldStatus;
+  dynamic liveStreamUrl;
   bool hasVideo;
   bool matchEnded;
   bool hasNews;
@@ -854,17 +854,17 @@ class Sta {
       };
 }
 
-enum StatusEnum { EMPTY, THE_73, THE_1900 }
+enum StatusEnum { empty, the_1900, status }
 
 final statusEnumValues = EnumValues({
-  "پایان": StatusEnum.EMPTY,
-  "19:00": StatusEnum.THE_1900,
-  "73 ′ ": StatusEnum.THE_73
+  "پایان": StatusEnum.empty,
+  "نیمه": StatusEnum.status,
+  "19:00": StatusEnum.the_1900
 });
 
-enum WeekEnum { THE_29 }
+enum WeekEnum { the_29 }
 
-final weekEnumValues = EnumValues({"هفته 29": WeekEnum.THE_29});
+final weekEnumValues = EnumValues({"هفته 29": WeekEnum.the_29});
 
 class DataStanding {
   DataStanding({
