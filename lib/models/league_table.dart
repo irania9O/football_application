@@ -48,53 +48,47 @@ class Data {
   int currentWeek;
   int currentStage;
   DataStanding standing;
-  List<StandingTab> standingTab;
-  DataNews news;
-  WeekClass week;
-  Info info;
-  List<WeekClass> weeks;
-  List<Assist> assistGoal;
-  List<Assist> assist;
-  List<Goal> goal;
-  Calendar calendar;
-  List<Match> recentLiveMatches;
+  bool standingTab;
+  bool news;
+  bool week;
+  bool info;
+  bool weeks;
+  bool assistGoal;
+  bool assist;
+  bool goal;
+  bool calendar;
+  bool recentLiveMatches;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         currentWeek: json["current_week"],
         currentStage: json["current_stage"],
         standing: DataStanding.fromJson(json["standing"]),
-        standingTab: List<StandingTab>.from(
-            json["standing_tab"].map((x) => StandingTab.fromJson(x))),
-        news: DataNews.fromJson(json["news"]),
-        week: WeekClass.fromJson(json["week"]),
-        info: Info.fromJson(json["info"]),
-        weeks: List<WeekClass>.from(
-            json["weeks"].map((x) => WeekClass.fromJson(x))),
-        assistGoal: List<Assist>.from(
-            json["assist_goal"].map((x) => Assist.fromJson(x))),
-        assist:
-            List<Assist>.from(json["assist"].map((x) => Assist.fromJson(x))),
-        goal: List<Goal>.from(json["goal"].map((x) => Goal.fromJson(x))),
-        calendar: Calendar.fromJson(json["calendar"]),
-        recentLiveMatches: List<Match>.from(
-            json["recent_live_matches"].map((x) => Match.fromJson(x))),
+        standingTab: false,
+        news: false,
+        week: false,
+        info: false,
+        weeks: false,
+        assistGoal: false,
+        assist: false,
+        goal: false,
+        calendar: false,
+        recentLiveMatches: false,
       );
 
   Map<String, dynamic> toJson() => {
         "current_week": currentWeek,
         "current_stage": currentStage,
         "standing": standing.toJson(),
-        "standing_tab": List<dynamic>.from(standingTab.map((x) => x.toJson())),
-        "news": news.toJson(),
-        "week": week.toJson(),
-        "info": info.toJson(),
-        "weeks": List<dynamic>.from(weeks.map((x) => x.toJson())),
-        "assist_goal": List<dynamic>.from(assistGoal.map((x) => x.toJson())),
-        "assist": List<dynamic>.from(assist.map((x) => x.toJson())),
-        "goal": List<dynamic>.from(goal.map((x) => x.toJson())),
-        "calendar": calendar.toJson(),
-        "recent_live_matches":
-            List<dynamic>.from(recentLiveMatches.map((x) => x.toJson())),
+        "standing_tab": standingTab,
+        "news": news,
+        "week": week,
+        "info": info,
+        "weeks": weeks,
+        "assist_goal": assistGoal,
+        "assist": assist,
+        "goal": goal,
+        "calendar": calendar,
+        "recent_live_matches": recentLiveMatches,
       };
 }
 
@@ -1030,42 +1024,6 @@ class StatusElement {
   Map<String, dynamic> toJson() => {
         "text": text,
         "color": color,
-      };
-}
-
-class StandingTab {
-  StandingTab({
-    required this.competitionId,
-    required this.nameEn,
-    required this.nameFa,
-    required this.hasTopscorer,
-    required this.logo,
-    required this.localizedName,
-  });
-
-  int competitionId;
-  String nameEn;
-  String nameFa;
-  bool hasTopscorer;
-  String logo;
-  String localizedName;
-
-  factory StandingTab.fromJson(Map<String, dynamic> json) => StandingTab(
-        competitionId: json["competition_id"],
-        nameEn: json["name_en"],
-        nameFa: json["name_fa"],
-        hasTopscorer: json["has_topscorer"],
-        logo: json["logo"],
-        localizedName: json["localized_name"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "competition_id": competitionId,
-        "name_en": nameEn,
-        "name_fa": nameFa,
-        "has_topscorer": hasTopscorer,
-        "logo": logo,
-        "localized_name": localizedName,
       };
 }
 
