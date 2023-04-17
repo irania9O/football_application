@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:app/models/league_table.dart';
 import '../services/leage_table_service.dart';
 
 class TableLeags extends StatefulWidget {
@@ -182,6 +182,5 @@ class _TableLeagsState extends State<TableLeags> {
               ),
             ),
           );
-    ;
   }
 }
