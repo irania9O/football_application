@@ -174,7 +174,12 @@ class _TableLeagsState extends State<TableLeags> {
             ))
         : const Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Colors.deepOrangeAccent,
+                strokeWidth: 7,
+                valueColor:
+                    AlwaysStoppedAnimation<Color>(Colors.deepOrangeAccent),
+              ),
             ),
           );
     ;
