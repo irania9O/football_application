@@ -39,7 +39,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return isLoaded
         ? Scaffold(
-            body: ListView.builder(
+            body: ScrollConfiguration(
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: ListView.builder(
               itemCount: competitions
                   .length, // footbalis!.data.competitionMatches[0].matches!.length,
               itemBuilder: (context, index) {
@@ -178,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-          )
+          ))
         : const Scaffold(
             body: Center(
               child: CircularProgressIndicator(
