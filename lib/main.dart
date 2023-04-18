@@ -1,7 +1,6 @@
 import 'package:app/views/home_page.dart';
 import 'package:app/views/table_leags.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 // handle named routes
 
@@ -21,10 +20,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MainPage(),
-      // routes: {
-      //   HomePage.routeName: (context) => const HomePage(),
-      //   TableLeags.routeName: (context) => const TableLeags(),
-      // },
     );
   }
 }
@@ -44,12 +39,6 @@ class _MainPageState extends State<MainPage> {
     const HomePage(),
     const HomePage(),
   ];
-  // final List _pages = [
-  //   const HomePage(),
-  //   const TableLeags(),
-  //   const HomePage(),
-  //   const HomePage(),
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +54,7 @@ class _MainPageState extends State<MainPage> {
                 BorderRadius.vertical(bottom: Radius.elliptical(100, 100)),
           )),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(top: 20, bottom: 20, left: 5, right: 5),
         child: _pages[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -85,8 +74,8 @@ class _MainPageState extends State<MainPage> {
             label: 'جدول لیگ ها',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'تاریخچه',
+            icon: Icon(Icons.new_releases),
+            label: 'اخبار',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

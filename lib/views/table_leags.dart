@@ -10,6 +10,7 @@ class TableLeags extends StatefulWidget {
 }
 
 class _TableLeagsState extends State<TableLeags> {
+  // ignore: prefer_typing_uninitialized_variables, non_constant_identifier_names
   var TableData;
   bool isLoaded = false;
 
@@ -34,10 +35,96 @@ class _TableLeagsState extends State<TableLeags> {
     return isLoaded
         ? Scaffold(
             body: ListView.builder(
-            itemCount: TableData.data.standing.standings[0].standings.length,
+            itemCount:
+                TableData.data.standing.standings[0].standings.length + 1,
             // set header
             // headerBuilder: (context, index) {
             itemBuilder: (context, index) {
+              if (index == 0) {
+                return Container(
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.only(bottom: 16),
+                  foregroundDecoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.grey,
+                        width: 0.5,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    children: const [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      SizedBox(
+                        width: 180,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Expanded(
+                        child: Text(
+                          'بازی',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(
+                        child: Text(
+                          'برد',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(
+                        child: Text(
+                          'مساوی',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(
+                        child: Text(
+                          'باخت',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(
+                        child: Text(
+                          'تفاضل',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(
+                        child: Text(
+                          'امتیاز',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              index -= 1;
               return InkWell(
                 child: Container(
                   margin: const EdgeInsets.all(5),
@@ -52,7 +139,7 @@ class _TableLeagsState extends State<TableLeags> {
                   child: Row(
                     children: [
                       const SizedBox(
-                        width: 10,
+                        width: 20,
                       ),
                       SizedBox(
                         width: 20,
