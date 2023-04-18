@@ -1,10 +1,13 @@
 import 'package:app/views/home_page.dart';
 import 'package:app/views/table_leags.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // handle named routes
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
 
@@ -48,18 +51,18 @@ class _MainPageState extends State<MainPage> {
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
           elevation: 10,
-          toolbarHeight: 65,
+          toolbarHeight: 60,
           shape: const RoundedRectangleBorder(
             borderRadius:
                 BorderRadius.vertical(bottom: Radius.elliptical(100, 100)),
           )),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 20, left: 5, right: 5),
+        padding: const EdgeInsets.only(top: 15, bottom: 5, left: 5, right: 5),
         child: _pages[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        selectedIconTheme: const IconThemeData(size: 30),
+        selectedIconTheme: const IconThemeData(size: 25),
         unselectedIconTheme: const IconThemeData(size: 25),
         showSelectedLabels: true,
         showUnselectedLabels: true,
