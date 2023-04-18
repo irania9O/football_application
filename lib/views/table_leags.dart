@@ -55,7 +55,7 @@ class _TableLeagsState extends State<TableLeags> {
                   child: Row(
                     children: const [
                       SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       SizedBox(
                         width: 20,
@@ -139,7 +139,7 @@ class _TableLeagsState extends State<TableLeags> {
                           ),
                         ),
                       ),
-                    ],
+                    ].reversed.toList(),
                   ),
                 );
               }
@@ -158,7 +158,7 @@ class _TableLeagsState extends State<TableLeags> {
                   child: Row(
                     children: [
                       const SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       SizedBox(
                         width: 20,
@@ -166,7 +166,7 @@ class _TableLeagsState extends State<TableLeags> {
                           TableData.data.standing.standings[0].standings[index]
                               .position
                               .toString(),
-                          textAlign: TextAlign.left,
+                          textAlign: TextAlign.right,
                           maxLines: 1,
                         ),
                       ),
@@ -192,7 +192,8 @@ class _TableLeagsState extends State<TableLeags> {
                         child: Text(
                           TableData.data.standing.standings[0].standings[index]
                               .team.nameFa,
-                          textAlign: TextAlign.left,
+                          textAlign: TextAlign.right,
+                          textDirection: TextDirection.rtl,
                           maxLines: 1,
                         ),
                       ),
@@ -267,7 +268,7 @@ class _TableLeagsState extends State<TableLeags> {
                       const SizedBox(
                         width: 4,
                       ),
-                    ],
+                    ].reversed.toList(),
                   ),
                 ),
               );
