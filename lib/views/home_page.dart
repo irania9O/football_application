@@ -43,6 +43,8 @@ class _HomePageState extends State<HomePage> {
               itemCount: competitions
                   .length, // footbalis!.data.competitionMatches[0].matches!.length,
               itemBuilder: (context, index) {
+                var date = DateTime.fromMillisecondsSinceEpoch(
+                    competitions[index].timestamp * 1000);
                 return InkWell(
                   highlightColor: Colors.deepOrangeAccent,
                   hoverColor: Colors.deepOrange,
@@ -52,8 +54,8 @@ class _HomePageState extends State<HomePage> {
                   // },
                   autofocus: false,
                   child: Container(
-                    margin: const EdgeInsets.all(16),
-                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
@@ -108,10 +110,34 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           width: 16,
                         ),
-                        Text(
-                          competitions[index].status,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        competitions[index].matchStarted
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '${competitions[index].homeTeamScore} - ${competitions[index].awayTeamScore}',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text(
+                                    competitions[index].status,
+                                    textAlign: TextAlign.values[1],
+                                  ),
+                                ],
+                              )
+                            : Text(
+                                '${date.hour}:${date.minute}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                        // Text(
+                        //   '${date.hour}:${date.minute}',
+                        //   style: const TextStyle(fontWeight: FontWeight.bold),
+                        // ),
                         const SizedBox(
                           width: 16,
                         ),
