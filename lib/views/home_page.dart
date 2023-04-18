@@ -77,8 +77,8 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         Container(
-                          width: 50,
-                          height: 50,
+                          width: 40,
+                          height: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             image: DecorationImage(
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         const SizedBox(
-                          width: 16,
+                          width: 10,
                         ),
                         Expanded(
                           child: Column(
@@ -101,8 +101,10 @@ class _HomePageState extends State<HomePage> {
                                     competitions[index].homeTeam.nameEn,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 14),
+                                textAlign: TextAlign.start,
+                                textDirection: TextDirection.rtl,
+                                textWidthBasis: TextWidthBasis.parent,
                               ),
                             ],
                           ),
@@ -134,10 +136,6 @@ class _HomePageState extends State<HomePage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                        // Text(
-                        //   '${date.hour}:${date.minute}',
-                        //   style: const TextStyle(fontWeight: FontWeight.bold),
-                        // ),
                         const SizedBox(
                           width: 16,
                         ),
@@ -150,18 +148,20 @@ class _HomePageState extends State<HomePage> {
                                     competitions[index].awayTeam.nameEn,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 14),
+                                textAlign: TextAlign.start,
+                                textDirection: TextDirection.rtl,
+                                textWidthBasis: TextWidthBasis.parent,
                               ),
                             ],
                           ),
                         ),
                         const SizedBox(
-                          width: 16,
+                          width: 10,
                         ),
                         Container(
-                          width: 50,
-                          height: 50,
+                          width: 40,
+                          height: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             image: DecorationImage(

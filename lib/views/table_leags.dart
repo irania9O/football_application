@@ -64,7 +64,7 @@ class _TableLeagsState extends State<TableLeags> {
                         width: 5,
                       ),
                       SizedBox(
-                        width: 180,
+                        width: 140,
                       ),
                       SizedBox(
                         width: 5,
@@ -73,6 +73,9 @@ class _TableLeagsState extends State<TableLeags> {
                         child: Text(
                           'بازی',
                           textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -82,6 +85,10 @@ class _TableLeagsState extends State<TableLeags> {
                         child: Text(
                           'برد',
                           textAlign: TextAlign.center,
+                          // font size
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -91,6 +98,9 @@ class _TableLeagsState extends State<TableLeags> {
                         child: Text(
                           'مساوی',
                           textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -100,6 +110,9 @@ class _TableLeagsState extends State<TableLeags> {
                         child: Text(
                           'باخت',
                           textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -109,6 +122,9 @@ class _TableLeagsState extends State<TableLeags> {
                         child: Text(
                           'تفاضل',
                           textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -118,6 +134,9 @@ class _TableLeagsState extends State<TableLeags> {
                         child: Text(
                           'امتیاز',
                           textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                     ],
@@ -169,7 +188,7 @@ class _TableLeagsState extends State<TableLeags> {
                         width: 5,
                       ),
                       SizedBox(
-                        width: 140,
+                        width: 100,
                         child: Text(
                           TableData.data.standing.standings[0].standings[index]
                               .team.nameFa,
