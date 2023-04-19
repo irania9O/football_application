@@ -48,12 +48,24 @@ class _LeagePageState extends State<LeagePage> {
             ),
             Expanded(
               child: TabBarView(children: [
-                TableLeags(),
-                Text('Push View 2'),
-                Text('Push View 3'),
-                Text('Push View 4'),
-                Text('Push View 5'),
-                Text('Push View 6'),
+                TableLeags(
+                  leageId: 21,
+                ),
+                TableLeags(
+                  leageId: 9,
+                ),
+                TableLeags(
+                  leageId: 14,
+                ),
+                TableLeags(
+                  leageId: 11,
+                ),
+                TableLeags(
+                  leageId: 12,
+                ),
+                TableLeags(
+                  leageId: 17,
+                ),
               ]),
             ),
           ],

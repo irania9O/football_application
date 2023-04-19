@@ -1,6 +1,5 @@
 import 'package:app/views/home_page.dart';
 import 'package:app/views/leage_page.dart';
-import 'package:app/views/table_leags.dart';
 import 'package:app/views/news_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +39,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   final dynamic _pages = [
     const HomePage(),
-    const TableLeags(),
+    const LeagePage(),
     const NewsPage(),
     const LeagePage(),
   ];

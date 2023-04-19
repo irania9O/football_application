@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import '../services/leage_table_service.dart';
+// import '../services/leage_table_service.dart';
+import '../services/table_service.dart';
 
 class TableLeags extends StatefulWidget {
-  const TableLeags({Key? key}) : super(key: key);
+  final int leageId;
+  const TableLeags({Key? key, required this.leageId}) : super(key: key);
+
   static String routeName = '/table';
 
   @override
@@ -21,10 +24,9 @@ class _TableLeagsState extends State<TableLeags> {
   }
 
   fetchLeagueTable() async {
-    final response2 = await LeagueTableService().fetchLeagueTable();
-    if (response2 != null) {
+    TableData = await TableService(widget.leageId).fetchTable();
+    if (TableData != null) {
       setState(() {
-        TableData = response2;
         isLoaded = true;
       });
     }
@@ -38,10 +40,10 @@ class _TableLeagsState extends State<TableLeags> {
                 behavior:
                     ScrollConfiguration.of(context).copyWith(scrollbars: false),
                 child: ListView.builder(
-                  itemCount:
-                      TableData.data.standing.standings[0].standings.length + 1,
-                  // set header
-                  // headerBuilder: (context, index) {
+                  itemCount: TableData['data']['standing']['standings'][0]
+                              ['standings']
+                          .length +
+                      1,
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return Container(
@@ -166,8 +168,8 @@ class _TableLeagsState extends State<TableLeags> {
                             SizedBox(
                               width: 20,
                               child: Text(
-                                TableData.data.standing.standings[0]
-                                    .standings[index].position
+                                TableData['data']['standing']['standings'][0]
+                                        ['standings'][index]['position']
                                     .toString(),
                                 textAlign: TextAlign.right,
                                 maxLines: 1,
@@ -180,8 +182,8 @@ class _TableLeagsState extends State<TableLeags> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                    TableData.data.standing.standings[0]
-                                        .standings[index].team.logo,
+                                    TableData['data']['standing']['standings']
+                                        [0]['standings'][index]['team']['logo'],
                                   ),
                                   fit: BoxFit.cover,
                                 ),
@@ -193,8 +195,9 @@ class _TableLeagsState extends State<TableLeags> {
                             SizedBox(
                               width: 100,
                               child: Text(
-                                TableData.data.standing.standings[0]
-                                    .standings[index].team.nameFa,
+                                TableData['data']['standing']['standings'][0]
+                                        ['standings'][index]['team']['name_fa']
+                                    .toString(),
                                 textAlign: TextAlign.right,
                                 textDirection: TextDirection.rtl,
                                 maxLines: 1,
@@ -205,8 +208,8 @@ class _TableLeagsState extends State<TableLeags> {
                             ),
                             Expanded(
                               child: Text(
-                                TableData.data.standing.standings[0]
-                                    .standings[index].matchPlayed
+                                TableData['data']['standing']['standings'][0]
+                                        ['standings'][index]['match_played']
                                     .toString(),
                                 textAlign: TextAlign.center,
                               ),
@@ -216,8 +219,8 @@ class _TableLeagsState extends State<TableLeags> {
                             ),
                             Expanded(
                               child: Text(
-                                TableData.data.standing.standings[0]
-                                    .standings[index].win
+                                TableData['data']['standing']['standings'][0]
+                                        ['standings'][index]['win']
                                     .toString(),
                                 textAlign: TextAlign.center,
                               ),
@@ -227,8 +230,8 @@ class _TableLeagsState extends State<TableLeags> {
                             ),
                             Expanded(
                               child: Text(
-                                TableData.data.standing.standings[0]
-                                    .standings[index].draw
+                                TableData['data']['standing']['standings'][0]
+                                        ['standings'][index]['draw']
                                     .toString(),
                                 textAlign: TextAlign.center,
                               ),
@@ -238,8 +241,8 @@ class _TableLeagsState extends State<TableLeags> {
                             ),
                             Expanded(
                               child: Text(
-                                TableData.data.standing.standings[0]
-                                    .standings[index].lose
+                                TableData['data']['standing']['standings'][0]
+                                        ['standings'][index]['lose']
                                     .toString(),
                                 textAlign: TextAlign.center,
                               ),
@@ -249,10 +252,12 @@ class _TableLeagsState extends State<TableLeags> {
                             ),
                             Expanded(
                               child: Text(
-                                (TableData.data.standing.standings[0]
-                                            .standings[index].goalScored -
-                                        TableData.data.standing.standings[0]
-                                            .standings[index].goalAgainst)
+                                (TableData['data']['standing']['standings'][0]
+                                                ['standings'][index]
+                                            ['goal_scored'] -
+                                        TableData['data']['standing']
+                                                ['standings'][0]['standings']
+                                            [index]['goal_against'])
                                     .toString(),
                                 textAlign: TextAlign.center,
                               ),
@@ -262,9 +267,12 @@ class _TableLeagsState extends State<TableLeags> {
                             ),
                             Expanded(
                               child: Text(
-                                TableData.data.standing.standings[0]
-                                    .standings[index].overallPoint
+                                TableData['data']['standing']['standings'][0]
+                                        ['standings'][index]['overall_point']
                                     .toString(),
+                                // TableData.data.standing.standings[0]
+                                //     .standings[index].overallPoint
+                                //     .toString(),
                                 textAlign: TextAlign.center,
                               ),
                             ),
