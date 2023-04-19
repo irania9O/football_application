@@ -78,6 +78,15 @@ class _NewsPageState extends State<NewsPage> {
                 );
               },
             ))
-        : const Center(child: CircularProgressIndicator());
+        : const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(
+                color: Colors.deepOrangeAccent,
+                strokeWidth: 7,
+                valueColor:
+                    AlwaysStoppedAnimation<Color>(Colors.deepOrangeAccent),
+              ),
+            ),
+          );
   }
 }
