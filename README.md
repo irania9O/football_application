@@ -1,16 +1,53 @@
-# app
+# Footballo App
+    
+_This is a football app project with the flutter framework._
 
-A new Flutter project.
+<br>
 
-## Getting Started
+# Starting 🚀
 
-This project is a starting point for a Flutter application.
+_These instructions allow you to get a copy of the running project on your local machine._
 
-A few resources to get you started if this is your first Flutter project:
+## Pre-requisites 📋
+_You need flutter sdk: '>=2.19.6 <3.0.0'_
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Installation 🔧
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Make a git clone or download it in zip
+```bash
+git clone https://github.com/irania9O/football_application.git
+```
+- Get in the directory
+
+<br>
+
+# Run the main 🧮:
+
+```bash
+flutter run [your device]
+```
+<br>
+
+# Ideas 💡:
+
+- Add a search bar to search for teams.
+- Add a search bar to search for players.
+- Add a search bar to search for matches.
+- Add a search bar to search for leagues.
+- Add a search bar to search for competitions.
+- Add news details.
+- Add team details.
+- Add player details.
+- Add match details.
+
+<br>
+
+# Screenshots
+<p float="left">
+  <img src="./screenshots/1.jpg" width="49%" />
+  <img src="./screenshots/2.jpg" width="49%" /> 
+</p>
+<p float="left">
+  <img src="./screenshots/3.jpg" width="49%" />
+  <img src="./screenshots/4.jpg" width="49%" /> 
+</p>
