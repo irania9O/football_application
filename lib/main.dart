@@ -1,3 +1,4 @@
+import 'package:app/views/about_page.dart';
 import 'package:app/views/home_page.dart';
 import 'package:app/views/leage_page.dart';
 import 'package:app/views/news_page.dart';
@@ -40,7 +41,7 @@ class _MainPageState extends State<MainPage> {
     const HomePage(),
     const LeagePage(),
     const NewsPage(),
-    const LeagePage(),
+    const AboutPage(),
   ];
 
   @override
