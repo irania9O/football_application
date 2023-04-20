@@ -24,7 +24,7 @@ class _TableLeagsState extends State<TableLeags> {
   }
 
   fetchLeagueTable() async {
-    TableData = await TableService(widget.leageId).fetchTable();
+    TableData = await fetchTable(widget.leageId);
     if (TableData != null) {
       setState(() {
         isLoaded = true;
