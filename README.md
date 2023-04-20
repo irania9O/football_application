@@ -21,12 +21,29 @@ git clone https://github.com/irania9O/football_application.git
 
 <br>
 
-# Run the main 🧮:
+# Run 🚀:
 
 ```bash
 flutter run [your device]
 ```
 <br>
+
+# Build 🚀:
+
+```bash
+flutter build [your device] 
+```
+<br>
+
+## Available devices 📋:
+```bash
+  aar         Build a repository containing an AAR and a POM file.
+  apk         Build an Android APK file from your app.
+  appbundle   Build an Android App Bundle file from your app.
+  bundle      Build the Flutter assets directory from your app.
+  linux       Build a Linux desktop application.
+  web         Build a web application bundle.
+```
 
 # Ideas 💡:
 
