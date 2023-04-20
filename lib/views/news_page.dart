@@ -30,22 +30,32 @@ class _NewsPageState extends State<NewsPage> {
   }
 
   fetchFirstData() async {
-    NewsData = await fetchNews(cursor);
-    if (NewsData != null) {
-      setState(() {
-        cursor = int.parse(NewsData['meta']['cursor']);
-        isLoaded = true;
-      });
+    try {
+      NewsData = await fetchNews(cursor);
+      if (NewsData != null) {
+        setState(() {
+          cursor = int.parse(NewsData['meta']['cursor']);
+          isLoaded = true;
+        });
+      }
+    } catch (e) {
+      fetchFirstData();
     }
   }
 
   fetchMoreData() async {
-    var moreData = await fetchNews(cursor);
-    if (moreData != null) {
-      setState(() {
-        cursor = int.parse(moreData['meta']['cursor']);
-        NewsData['data']['news'].addAll(moreData['data']['news']);
-      });
+    try {
+      Map<String, dynamic>? moreData;
+      moreData = await fetchNews(cursor);
+
+      if (moreData != null) {
+        setState(() {
+          cursor = int.parse(moreData!['meta']['cursor']);
+          NewsData['data']['news'].addAll(moreData['data']['news']);
+        });
+      }
+    } catch (e) {
+      fetchMoreData();
     }
   }
 

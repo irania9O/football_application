@@ -21,17 +21,21 @@ class _HomePageState extends State<HomePage> {
   }
 
   fetchDataFootbalis() async {
-    final response2 = await fetchFootbalis();
-    if (response2 != null) {
-      setState(() {
-        for (int i = 0;
-            i < response2['data']['competition_matches'].length;
-            i++) {
-          competitions
-              .addAll(response2['data']['competition_matches'][i]['matches']);
-        }
-        isLoaded = true;
-      });
+    try {
+      final response = await fetchFootbalis();
+      if (response != null) {
+        setState(() {
+          for (int i = 0;
+              i < response['data']['competition_matches'].length;
+              i++) {
+            competitions
+                .addAll(response['data']['competition_matches'][i]['matches']);
+          }
+          isLoaded = true;
+        });
+      }
+    } catch (e) {
+      fetchDataFootbalis();
     }
   }
 

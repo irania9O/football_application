@@ -16,7 +16,7 @@ class _TableLeagsState extends State<TableLeags> {
   // ignore: prefer_typing_uninitialized_variables, non_constant_identifier_names
   var TableData;
   bool isLoaded = false;
-  String Logo = "";
+  String logoUrl = "";
 
   @override
   void initState() {
@@ -25,18 +25,23 @@ class _TableLeagsState extends State<TableLeags> {
   }
 
   fetchLeagueTable() async {
-    var leageId = widget.leageId;
-    TableData = await fetchTable(leageId);
-    if (TableData != null) {
-      setState(() {
-        for (int i = 0; i < TableData['data']['standing_tab'].length; i++) {
-          if (TableData['data']['standing_tab'][i]['competition_id'] ==
-              leageId) {
-            Logo = TableData['data']['standing_tab'][i]['logo'];
+    try {
+      var leageId = widget.leageId;
+      TableData = await fetchTable(leageId);
+
+      if (TableData != null) {
+        setState(() {
+          for (int i = 0; i < TableData['data']['standing_tab'].length; i++) {
+            if (TableData['data']['standing_tab'][i]['competition_id'] ==
+                leageId) {
+              logoUrl = TableData['data']['standing_tab'][i]['logo'];
+            }
           }
-        }
-        isLoaded = true;
-      });
+          isLoaded = true;
+        });
+      }
+    } catch (e) {
+      fetchLeagueTable();
     }
   }
 
@@ -53,7 +58,7 @@ class _TableLeagsState extends State<TableLeags> {
                       image: DecorationImage(
                         opacity: 0.2,
                         image: NetworkImage(
-                          Logo,
+                          logoUrl,
                         ),
                         fit: BoxFit.contain,
                       ),
