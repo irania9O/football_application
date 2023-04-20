@@ -1,4 +1,3 @@
-import 'package:app/models/footbali_model.dart';
 import 'package:app/services/footbali_services.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
@@ -13,24 +12,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List competitions = [];
-  Football? footbalis;
   bool isLoaded = false;
 
   @override
   void initState() {
     super.initState();
-    fetchFootbalis();
+    fetchDataFootbalis();
   }
 
-  fetchFootbalis() async {
-    final response2 = await FootballService().fetchFootbalis();
+  fetchDataFootbalis() async {
+    final response2 = await fetchFootbalis();
     if (response2 != null) {
       setState(() {
-        // append all the matches
-        for (var i = 0; i < response2.data.competitionMatches.length; i++) {
-          competitions.addAll(response2.data.competitionMatches[i].matches!);
+        for (int i = 0;
+            i < response2['data']['competition_matches'].length;
+            i++) {
+          competitions
+              .addAll(response2['data']['competition_matches'][i]['matches']);
         }
-        footbalis = response2;
         isLoaded = true;
       });
     }
@@ -43,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: GroupedListView<dynamic, String>(
             elements: competitions,
-            groupBy: (element) => element.competition.nameFa,
+            groupBy: (element) => element['competition']['name_fa'],
             groupSeparatorBuilder: (String value) => Container(
               margin: const EdgeInsets.only(
                   top: 25, right: 10, left: 10, bottom: 5),
@@ -72,8 +71,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             itemBuilder: (context, element) {
-              var date =
-                  DateTime.fromMillisecondsSinceEpoch(element.timestamp * 1000);
+              var date = DateTime.fromMillisecondsSinceEpoch(
+                  element['timestamp'] * 1000);
               return InkWell(
                 highlightColor: Colors.deepOrangeAccent,
                 hoverColor: Colors.deepOrange,
@@ -112,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(12),
                           image: DecorationImage(
                             image: NetworkImage(
-                              element.homeTeam.logo,
+                              element['home_team']['logo'],
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -126,8 +125,8 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              element.homeTeam.nameFa ??
-                                  element.homeTeam.nameEn,
+                              element['home_team']['name_fa'] ??
+                                  element['home_team']['name_en'],
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(fontSize: 14),
@@ -141,12 +140,12 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(
                         width: 16,
                       ),
-                      element.matchStarted
+                      element['match_started']
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  '${element.homeTeamScore} - ${element.awayTeamScore}',
+                                  '${element['home_team_score']} - ${element['away_team_score']}',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -154,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 8,
                                 ),
                                 Text(
-                                  element.status,
+                                  element['status'],
                                   textAlign: TextAlign.values[1],
                                 ),
                               ],
@@ -173,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
-                              element.awayTeam.nameFa ??
-                                  element.awayTeam.nameEn,
+                              element['away_team']['name_fa'] ??
+                                  element['away_team']['name_en'],
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(fontSize: 14),
@@ -195,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(12),
                           image: DecorationImage(
                             image: NetworkImage(
-                              element.awayTeam.logo,
+                              element['away_team']['logo'],
                             ),
                             fit: BoxFit.cover,
                           ),
