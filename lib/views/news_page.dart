@@ -18,14 +18,14 @@ class _NewsPageState extends State<NewsPage> {
   @override
   void initState() {
     super.initState();
-    fetchNews();
+    fetchFirstData();
   }
 
-  fetchNews() async {
-    final response2 = await NewsService().fetchNews();
-    if (response2 != null) {
+  fetchFirstData() async {
+    NewsData = await fetchNews(100);
+    if (NewsData != null) {
       setState(() {
-        NewsData = response2;
+        print(NewsData['data']['news'].length);
         isLoaded = true;
       });
     }
@@ -38,9 +38,9 @@ class _NewsPageState extends State<NewsPage> {
             behavior:
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),
             child: ListView.builder(
-              itemCount: NewsData.data.news.length,
+              itemCount: NewsData['data']['news'].length,
               itemBuilder: (context, index) {
-                if (NewsData.data.news[index].language != 1) {
+                if (NewsData['data']['news'][index]['language'] != 1) {
                   return const SizedBox();
                 }
                 return Card(
@@ -53,7 +53,8 @@ class _NewsPageState extends State<NewsPage> {
                         color: Colors.grey,
                         image: DecorationImage(
                           image: NetworkImage(
-                            NewsData.data.news[index].newsImage[0].url,
+                            NewsData['data']['news'][index]['news_image'][0]
+                                ['url'],
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -62,7 +63,7 @@ class _NewsPageState extends State<NewsPage> {
                     title: Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Text(
-                        NewsData.data.news[index].title,
+                        NewsData['data']['news'][index]['title'],
                         textAlign: TextAlign.right,
                         textDirection: TextDirection.rtl,
                         style: const TextStyle(
@@ -71,7 +72,7 @@ class _NewsPageState extends State<NewsPage> {
                         ),
                       ),
                     ),
-                    subtitle: Text(NewsData.data.news[index].summary,
+                    subtitle: Text(NewsData['data']['news'][index]['summary'],
                         maxLines: 1, overflow: TextOverflow.ellipsis),
                     contentPadding: const EdgeInsets.all(12),
                   ),
