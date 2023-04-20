@@ -4,6 +4,7 @@ import 'package:app/views/leage_page.dart';
 import 'package:app/views/news_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // handle named routes
 
@@ -74,20 +75,20 @@ class _MainPageState extends State<MainPage> {
         // revese the order of the items
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'خانه',
+            icon: Icon(FontAwesomeIcons.futbol),
+            label: 'بازی های امروز',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.table_chart),
+            icon: Icon(FontAwesomeIcons.tableList),
             label: 'جدول لیگ ها',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.new_releases),
+            icon: Icon(FontAwesomeIcons.newspaper),
             label: 'اخبار',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'پروفایل',
+            icon: Icon(FontAwesomeIcons.circleInfo),
+            label: 'درباره ما',
           ),
         ],
         currentIndex: _selectedIndex,
