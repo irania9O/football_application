@@ -1,3 +1,4 @@
+import 'package:app/views/news_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
@@ -86,11 +87,18 @@ class _NewsPageState extends State<NewsPage> {
                   ).formatter;
                   return InkWell(
                     highlightColor: Colors.deepOrangeAccent,
-                    hoverColor: Colors.deepOrange,
-                    splashColor: Colors.white,
-                    // onTap: () {
-                    //   print(competitions[index].homeTeam.nameEn);
-                    // },
+                    // hoverColor: Colors.deepOrange,
+                    // splashColor: Colors.red,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewsDetailPage(
+                            newsId: NewsData['data']['news'][index]['news_id'],
+                          ),
+                        ),
+                      );
+                    },
                     autofocus: false,
                     child: Container(
                       margin: const EdgeInsets.all(10),
