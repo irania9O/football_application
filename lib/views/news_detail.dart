@@ -1,8 +1,6 @@
 import 'package:app/services/news_detail_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:html/dom.dart' as dom;
-import 'package:html/parser.dart';
 
 class NewsDetailPage extends StatefulWidget {
   final int newsId;
@@ -13,6 +11,7 @@ class NewsDetailPage extends StatefulWidget {
 }
 
 class _NewsDetailPageState extends State<NewsDetailPage> {
+  // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables
   var NewData;
   bool isLoaded = false;
 
@@ -28,9 +27,6 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
 
       if (NewData != null) {
         setState(() {
-          var document = parse(
-              '<body>Hello world! <a href="www.html5rocks.com">HTML5 rocks!');
-          print(document);
           isLoaded = true;
         });
       }
