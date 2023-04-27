@@ -40,6 +40,7 @@ dependencies:
   shamsi_date: ^1.0.1
   url_launcher: ^6.1.10
   font_awesome_flutter: ^10.4.0
+  flutter_html: ^2.2.1
 
 dev_dependencies:
   flutter_test:
