@@ -1,6 +1,6 @@
 import 'package:app/services/news_detail_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 class NewsDetailPage extends StatefulWidget {
   final int newsId;
@@ -56,64 +56,50 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                         fit: BoxFit.cover,
                       ),
                     )),
-                // Container(
-                //   padding: const EdgeInsets.all(5),
-                //   margin: const EdgeInsets.all(10),
-                //   child: Text(
-                //     NewData["data"]["details"]["title"],
-                //     textAlign: TextAlign.start,
-                //     textDirection: TextDirection.rtl,
-                //     style: const TextStyle(
-                //       fontSize: 18,
-                //     ),
-                //   ),
-                // ),
-                SliverAppBar(
-                  automaticallyImplyLeading: false,
-                  backgroundColor: Colors.white,
-                  toolbarHeight: 60,
-                  pinned: true,
-                  centerTitle: true,
-                  title: Text(
-                    "${NewData["data"]["details"]["title"]}",
-                    style: const TextStyle(
-                        color: Colors.deepOrangeAccent,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
+                SliverToBoxAdapter(
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    margin: const EdgeInsets.all(10),
+                    child: Text(
+                      NewData["data"]["details"]["title"],
+                      textAlign: TextAlign.start,
+                      textDirection: TextDirection.rtl,
+                      style: const TextStyle(
+                          color: Colors.deepOrangeAccent,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 )
               ],
-
               body: SingleChildScrollView(
-                child: Html(
-                  data: NewData["data"]["details"]["body"],
-                  style: {
-                    "body": Style(
-                      fontSize: const FontSize(18.0),
-                      textAlign: TextAlign.right,
-                      direction: TextDirection.rtl,
-                      padding: const EdgeInsets.all(10),
-                    ),
+                padding: const EdgeInsets.all(5),
+                child: HtmlWidget(
+                  NewData["data"]["details"]["body"],
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                  ),
+                  customStylesBuilder: (element) {
+                    if (element.localName == 'p') {
+                      return {
+                        'direction': 'rtl',
+                        'textAlign': 'right',
+                        'padding': '8px',
+                      };
+                    }
+                    return null;
+                  },
+                  customWidgetBuilder: (element) {
+                    if (element.localName == 'img') {
+                      return Image.network(
+                        element.attributes['src']!,
+                        fit: BoxFit.cover,
+                      );
+                    }
+                    return null;
                   },
                 ),
               ),
-              // body: Column(
-              //   children: [
-              //     Container(
-              //       padding: const EdgeInsets.all(5),
-              //       margin: const EdgeInsets.all(10),
-              //       child: Text(
-              //         NewData["data"]["details"]["title"],
-              //         textAlign: TextAlign.start,
-              //         textDirection: TextDirection.rtl,
-              //         style: const TextStyle(
-              //           fontSize: 18,
-              //         ),
-              //       ),
-              //     ),
-
-              //   ],
-              // ),
             ),
           )
         : Scaffold(
