@@ -1,7 +1,6 @@
 import 'package:app/services/news_detail_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-// import 'package:flutter_html/flutter_html.dart';
 
 class NewsDetailPage extends StatefulWidget {
   final int newsId;
@@ -75,34 +74,11 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
               ],
               body: SingleChildScrollView(
                 padding: const EdgeInsets.all(5),
-                // child: Html(
-                //   data: NewData["data"]["details"]["body"],
-                //   style: {
-                //     "body": Style(
-                //       direction: TextDirection.rtl,
-                //       textAlign: TextAlign.right,
-                //       fontSize: const FontSize(18),
-                //       padding: const EdgeInsets.all(8),
-                //     ),
-                //     "img": Style(
-                //       direction: TextDirection.rtl,
-                //       textAlign: TextAlign.right,
-                //       padding: const EdgeInsets.all(8),
-                //     ),
-                //     "p": Style(
-                //       direction: TextDirection.rtl,
-                //       textAlign: TextAlign.right,
-                //       padding: const EdgeInsets.all(8),
-                //     ),
-                //   },
-                // )
-                // html parse
                 child: HtmlWidget(
                   NewData["data"]["details"]["body"],
                   textStyle: const TextStyle(
                     fontSize: 18,
                   ),
-                  // directrion right
                   customStylesBuilder: (element) {
                     if (element.localName == 'p') {
                       return {
