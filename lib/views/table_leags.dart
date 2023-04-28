@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 // import '../services/leage_table_service.dart';
 import '../services/table_service.dart';
@@ -205,7 +206,12 @@ class _TableLeagsState extends State<TableLeags> {
                                   height: 30,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
-                                      image: NetworkImage(
+                                      // image: NetworkImage(
+                                      //   TableData['data']['standing']
+                                      //           ['standings'][0]['standings']
+                                      //       [index]['team']['logo'],
+                                      // ),
+                                      image: CachedNetworkImageProvider(
                                         TableData['data']['standing']
                                                 ['standings'][0]['standings']
                                             [index]['team']['logo'],
