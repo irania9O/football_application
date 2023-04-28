@@ -41,7 +41,6 @@ dependencies:
   url_launcher: ^6.1.10
   font_awesome_flutter: ^10.4.0
   flutter_widget_from_html_core: ^0.10.0
-  
 
 dev_dependencies:
   flutter_test:
