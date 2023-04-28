@@ -58,7 +58,7 @@ class _TableLeagsState extends State<TableLeags> {
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
                         opacity: 0.2,
-                        image: NetworkImage(
+                        image: CachedNetworkImageProvider(
                           logoUrl,
                         ),
                         fit: BoxFit.contain,
