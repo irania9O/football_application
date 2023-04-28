@@ -40,7 +40,9 @@ dependencies:
   shamsi_date: ^1.0.1
   url_launcher: ^6.1.10
   font_awesome_flutter: ^10.4.0
-
+  webview_flutter: ^4.2.0
+  flutter_widget_from_html: ^0.10.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
