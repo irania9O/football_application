@@ -1,7 +1,8 @@
 import 'package:app/views/about_page.dart';
-import 'package:app/views/home_page.dart';
+// import 'package:app/views/home_page.dart';
 import 'package:app/views/leage_page.dart';
 import 'package:app/views/news_page.dart';
+import 'package:app/views/table_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -39,7 +40,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 3;
   final dynamic _pages = [
-    const HomePage(),
+    const TablePage(),
     const LeagePage(),
     const NewsPage(),
     const AboutPage(),

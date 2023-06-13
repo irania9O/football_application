@@ -3,15 +3,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class table_games_live_page extends StatefulWidget {
+  final String tab_id;
+  const table_games_live_page({Key? key, required this.tab_id})
+      : super(key: key);
   static String routeName = '/home';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<table_games_live_page> createState() => _table_games_live_pageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _table_games_live_pageState extends State<table_games_live_page> {
   List competitions = [];
   bool isLoaded = false;
 
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   fetchDataFootbalis() async {
     try {
-      final response = await fetchFootbalis();
+      final response = await fetchFootbalis(tab: widget.tab_id);
       if (response != null) {
         setState(() {
           for (int i = 0;
@@ -43,6 +45,27 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     if (isLoaded) {
+      if (competitions.isEmpty) {
+        return const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.gamepad,
+                size: 100,
+                color: Colors.deepOrangeAccent,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "هیچ بازی وجود ندارد",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        );
+      }
       return ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: GroupedListView<dynamic, String>(
@@ -119,7 +142,8 @@ class _HomePageState extends State<HomePage> {
                             // element['home_team']['logo'],
                             // ),
                             image: CachedNetworkImageProvider(
-                              element['home_team']['logo'],
+                              element['home_team']['logo'] ??
+                                  "https://i.pravatar.cc/100?img=0",
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -205,7 +229,8 @@ class _HomePageState extends State<HomePage> {
                             //   element['away_team']['logo'],
                             // ),
                             image: CachedNetworkImageProvider(
-                              element['away_team']['logo'],
+                              element['away_team']['logo'] ??
+                                  "https://i.pravatar.cc/100?img=80",
                             ),
                             fit: BoxFit.cover,
                           ),
