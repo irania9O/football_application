@@ -11,11 +11,12 @@ class LeagePage extends StatefulWidget {
 class _LeagePageState extends State<LeagePage> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return const DefaultTabController(
       length: 6,
+      initialIndex: 5,
       child: Scaffold(
         body: Column(
-          children: const <Widget>[
+          children: <Widget>[
             TabBar(
               isScrollable: true,
               indicatorColor: Colors.deepOrangeAccent,
@@ -33,9 +34,6 @@ class _LeagePageState extends State<LeagePage> {
                   text: 'لیگ برتر انگلیس',
                 ),
                 Tab(
-                  text: 'لیگ برتر خلیج فارس',
-                ),
-                Tab(
                   text: 'لیگ فرانسه',
                 ),
                 Tab(
@@ -43,6 +41,9 @@ class _LeagePageState extends State<LeagePage> {
                 ),
                 Tab(
                   text: 'سری آ ایتالیا',
+                ),
+                Tab(
+                  text: 'لیگ برتر خلیج فارس',
                 ),
               ],
             ),
@@ -55,9 +56,6 @@ class _LeagePageState extends State<LeagePage> {
                   leageId: 9,
                 ),
                 TableLeags(
-                  leageId: 14,
-                ),
-                TableLeags(
                   leageId: 11,
                 ),
                 TableLeags(
@@ -65,6 +63,9 @@ class _LeagePageState extends State<LeagePage> {
                 ),
                 TableLeags(
                   leageId: 17,
+                ),
+                TableLeags(
+                  leageId: 14,
                 ),
               ]),
             ),
