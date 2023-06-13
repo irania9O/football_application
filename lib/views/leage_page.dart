@@ -11,7 +11,7 @@ class LeagePage extends StatefulWidget {
 class _LeagePageState extends State<LeagePage> {
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
+    return DefaultTabController(
       length: 6,
       initialIndex: 5,
       child: Scaffold(
@@ -20,13 +20,13 @@ class _LeagePageState extends State<LeagePage> {
             TabBar(
               isScrollable: true,
               indicatorColor: Colors.deepOrangeAccent,
-              labelColor: Colors.black,
+              labelColor: Theme.of(context).textTheme.bodyLarge?.color,
               dividerColor: Colors.deepOrangeAccent,
               unselectedLabelColor: Colors.grey,
               automaticIndicatorColorAdjustment: true,
-              padding: EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20),
               indicatorWeight: 5,
-              tabs: <Widget>[
+              tabs: const <Widget>[
                 Tab(
                   text: 'لالیگا اسپانیا',
                 ),

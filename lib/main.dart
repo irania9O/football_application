@@ -22,9 +22,68 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Vazir',
+      theme: ThemeData.light().copyWith(
+        primaryColor: Colors.white,
+        canvasColor: Colors.white,
+        cardColor: Colors.amber[100],
+        colorScheme: const ColorScheme.dark(
+          primary: Colors.white,
+          secondary: Colors.white,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.black),
+          bodyMedium: TextStyle(color: Colors.black),
+        ),
+        iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+            iconColor: MaterialStateProperty.all(Colors.black),
+          ),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
       ),
+      darkTheme: ThemeData.light().copyWith(
+        primaryColor: Colors.black,
+        canvasColor: Colors.black,
+        cardColor: Colors.grey,
+        colorScheme: const ColorScheme.dark(
+          primary: Colors.black,
+          secondary: Colors.black,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.black,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+          foregroundColor: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
+          bodySmall: TextStyle(color: Colors.black),
+        ),
+        iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+            iconColor: MaterialStateProperty.all(Colors.white),
+          ),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+      ),
+      themeMode: ThemeMode.system,
       home: const MainPage(),
     );
   }
@@ -51,10 +110,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
           title: const Text('فوتبالو',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
           elevation: 10,

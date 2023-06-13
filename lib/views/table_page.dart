@@ -51,7 +51,7 @@ class _TablePageState extends State<TablePage> {
               TabBar(
                   isScrollable: true,
                   indicatorColor: Colors.deepOrangeAccent,
-                  labelColor: Colors.black,
+                  labelColor: Theme.of(context).textTheme.bodyLarge?.color,
                   dividerColor: Colors.deepOrangeAccent,
                   unselectedLabelColor: Colors.grey,
                   automaticIndicatorColorAdjustment: true,

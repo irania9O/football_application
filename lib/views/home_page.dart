@@ -79,14 +79,14 @@ class _table_games_live_pageState extends State<table_games_live_page> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: Colors.deepOrange,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 6,
-                      blurRadius: 6,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.withOpacity(0.5),
+                  //     spreadRadius: 6,
+                  //     blurRadius: 6,
+                  //     offset: const Offset(0, 5),
+                  //   ),
+                  // ],
                 ),
                 child: Text(
                   value,
@@ -114,15 +114,15 @@ class _table_games_live_pageState extends State<table_games_live_page> {
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
+                    color: Theme.of(context).cardColor,
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.5),
+                    //     spreadRadius: 5,
+                    //     blurRadius: 7,
+                    //     offset: const Offset(0, 3),
+                    //   ),
+                    // ],
                   ),
                   foregroundDecoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -161,7 +161,12 @@ class _table_games_live_pageState extends State<table_games_live_page> {
                                   element['home_team']['name_en'],
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(fontSize: 14),
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.color),
                               textAlign: TextAlign.start,
                               textDirection: TextDirection.rtl,
                               textWidthBasis: TextWidthBasis.parent,
@@ -178,8 +183,12 @@ class _table_games_live_pageState extends State<table_games_live_page> {
                               children: [
                                 Text(
                                   '${element['home_team_score']} - ${element['away_team_score']}',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.color),
                                 ),
                                 const SizedBox(
                                   height: 8,
@@ -192,9 +201,12 @@ class _table_games_live_pageState extends State<table_games_live_page> {
                             )
                           : Text(
                               '${date.hour}:${date.minute}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.color),
                             ),
                       const SizedBox(
                         width: 16,
@@ -208,7 +220,12 @@ class _table_games_live_pageState extends State<table_games_live_page> {
                                   element['away_team']['name_en'],
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(fontSize: 14),
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.color),
                               textAlign: TextAlign.start,
                               textDirection: TextDirection.rtl,
                               textWidthBasis: TextWidthBasis.parent,
