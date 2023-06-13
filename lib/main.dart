@@ -37,13 +37,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 3;
   final dynamic _pages = [
     const HomePage(),
     const LeagePage(),
     const NewsPage(),
     const AboutPage(),
-  ];
+  ].reversed.toList();
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,7 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(FontAwesomeIcons.circleInfo),
             label: 'درباره ما',
           ),
-        ],
+        ].reversed.toList(),
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.deepOrange,
         unselectedItemColor: Colors.grey,
