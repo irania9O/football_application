@@ -1,19 +1,21 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:app/services/footbali_services.dart';
+import 'package:app/views/detail_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 
-class table_games_live_page extends StatefulWidget {
+class TableGamesLivePage extends StatefulWidget {
   final String tab_id;
-  const table_games_live_page({Key? key, required this.tab_id})
-      : super(key: key);
+  const TableGamesLivePage({Key? key, required this.tab_id}) : super(key: key);
   static String routeName = '/home';
 
   @override
-  State<table_games_live_page> createState() => _table_games_live_pageState();
+  State<TableGamesLivePage> createState() => _TableGamesLivePageState();
 }
 
-class _table_games_live_pageState extends State<table_games_live_page> {
+class _TableGamesLivePageState extends State<TableGamesLivePage> {
   List competitions = [];
   bool isLoaded = false;
 
@@ -102,12 +104,20 @@ class _table_games_live_pageState extends State<table_games_live_page> {
               var date = DateTime.fromMillisecondsSinceEpoch(
                   element['timestamp'] * 1000);
               return InkWell(
-                highlightColor: Colors.deepOrangeAccent,
-                hoverColor: Colors.deepOrange,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
                 splashColor: Colors.white,
-                // onTap: () {
-                //   print(competitions[index].homeTeam.nameEn);
-                // },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MatchDetailPage(
+                        matchId: element["match_id"],
+                      ),
+                    ),
+                  );
+                  // print(element["match_id"]);
+                },
                 autofocus: false,
                 child: Container(
                   margin: const EdgeInsets.all(10),
@@ -193,10 +203,13 @@ class _table_games_live_pageState extends State<table_games_live_page> {
                                 const SizedBox(
                                   height: 8,
                                 ),
-                                Text(
-                                  element['status'],
-                                  textAlign: TextAlign.values[1],
-                                ),
+                                Text(element['status'],
+                                    textAlign: TextAlign.values[1],
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall
+                                            ?.color)),
                               ],
                             )
                           : Text(

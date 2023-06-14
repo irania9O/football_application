@@ -22,14 +22,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light().copyWith(
+      theme: ThemeData(
+        fontFamily: 'Vazir',
         primaryColor: Colors.white,
         canvasColor: Colors.white,
         cardColor: Colors.amber[100],
-        colorScheme: const ColorScheme.dark(
-          primary: Colors.white,
-          secondary: Colors.white,
-        ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.white,
@@ -42,6 +39,7 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
           bodyLarge: TextStyle(color: Colors.black),
           bodyMedium: TextStyle(color: Colors.black),
+          bodySmall: TextStyle(color: Colors.black),
         ),
         iconButtonTheme: IconButtonThemeData(
           style: ButtonStyle(
@@ -52,14 +50,11 @@ class MyApp extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      darkTheme: ThemeData.light().copyWith(
+      darkTheme: ThemeData(
+        fontFamily: 'Vazir',
         primaryColor: Colors.black,
         canvasColor: Colors.black,
         cardColor: Colors.grey,
-        colorScheme: const ColorScheme.dark(
-          primary: Colors.black,
-          secondary: Colors.black,
-        ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.black,
           elevation: 0,
@@ -83,7 +78,7 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       home: const MainPage(),
     );
   }
@@ -110,7 +105,10 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
           title: const Text('فوتبالو',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              )),
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
           elevation: 10,

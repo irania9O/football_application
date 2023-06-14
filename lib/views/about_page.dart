@@ -75,8 +75,8 @@ class _AboutPageState extends State<AboutPage> {
                         color: Colors.grey.withOpacity(0.5),
                       ),
                     ),
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Expanded(
                           child: Text(
                             "Follow me on Github",
@@ -118,8 +118,8 @@ class _AboutPageState extends State<AboutPage> {
                         color: Colors.grey.withOpacity(0.5),
                       ),
                     ),
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Expanded(
                           child: Text(
                             "wwwwwq37@gmail.com",
@@ -162,8 +162,8 @@ class _AboutPageState extends State<AboutPage> {
                         color: Colors.grey.withOpacity(0.5),
                       ),
                     ),
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Expanded(
                           child: Text(
                             "Message me on Telegram",
@@ -205,8 +205,8 @@ class _AboutPageState extends State<AboutPage> {
                         color: Colors.grey.withOpacity(0.5),
                       ),
                     ),
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Expanded(
                           child: Text(
                             "Follow me on Instagram",

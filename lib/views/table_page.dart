@@ -68,7 +68,7 @@ class _TablePageState extends State<TablePage> {
                 child: TabBarView(
                     children: pages
                         .map(
-                          (e) => table_games_live_page(
+                          (e) => TableGamesLivePage(
                               tab_id: e['id']), //Tab(text: e['id']),
                         )
                         .toList()
