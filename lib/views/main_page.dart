@@ -33,8 +33,8 @@ class _MainPageState extends State<MainPage> {
                 ),
               ],
             ),
-            child: Row(
-              children: const [
+            child: const Row(
+              children: [
                 Icon(Icons.search),
                 SizedBox(
                   width: 16,
