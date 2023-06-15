@@ -1,5 +1,6 @@
 import 'package:app/services/match_datail_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:tab_container/tab_container.dart';
 import 'package:flutter/material.dart';
 
 class MatchDetailPage extends StatefulWidget {
@@ -211,56 +212,78 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
+                  height: 450,
                   width: width * 0.95,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
+                  child: TabContainer(
                     color: Theme.of(context).cardColor,
-                  ),
-                  child: const Column(
+                    onEnd: () {
+                      print("x");
+                    },
+                    tabs: const ['رو در رو', 'اخبار', 'اتفاقات'],
                     children: [
-                      SizedBox(height: 10),
-                      Text("box stats"),
-                      Text("box stats"),
-                      Text("box stats"),
-                      Text("box stats"),
-                      Text("box stats"),
-                      SizedBox(height: 10),
+                      Container(
+                        // width: width * 0.95,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
+                        child: const Column(
+                          children: [
+                            SizedBox(height: 10),
+                            Text(" رو در رو"),
+                            Text(" رو در رو"),
+                            Text(" رو در رو"),
+                            Text(" رو در رو"),
+                            Text(" رو در رو"),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        // width: width * 0.95,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
+                        child: const Column(
+                          children: [
+                            SizedBox(height: 10),
+                            Text(" اخبار"),
+                            Text(" اخبار"),
+                            Text(" اخبار"),
+                            Text(" اخبار"),
+                            Text(" اخبار"),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        // width: width * 0.95,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
+                        child: const Column(
+                          children: [
+                            SizedBox(height: 10),
+                            Text(" اتفاقات"),
+                            Text(" اتفاقات"),
+                            Text(" اتفاقات"),
+                            Text(" اتفاقات"),
+                            Text(" اتفاقات"),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
                 Container(
-                  width: width * 0.95,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Theme.of(context).cardColor,
-                  ),
-                  child: const Column(
-                    children: [
-                      SizedBox(height: 10),
-                      Text("box history"),
-                      Text("box history"),
-                      Text("box history"),
-                      Text("box history"),
-                      Text("box history"),
-                      SizedBox(height: 10),
-                    ],
-                  ),
-                ),
-                const Spacer(),
-                Container(
-                  color: Colors.white,
                   width: double.infinity,
-                  child: Column(
-                    children: [
-                      Text(MatchData["data"]["info"]['status']),
-                    ],
-                  ),
                 ),
               ],
             ),

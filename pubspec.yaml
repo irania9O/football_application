@@ -42,6 +42,7 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   flutter_widget_from_html_core: ^0.10.0
   cached_network_image: ^3.2.3
+  tab_container: ^2.0.0
 
 dev_dependencies:
   flutter_test:
